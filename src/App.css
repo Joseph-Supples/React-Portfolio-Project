@@ -39,9 +39,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 
-body{
-  font-family: "Roboto Condensed" sans-serif;
-}
+
 
 :root{
   --primary-orange: #f9ab00;
@@ -49,6 +47,11 @@ body{
   --primary-red: #ef4035;
   --primary-hover-red: #f33501;
 }
+
+
+body{
+  font-family: 'Roboto Condensed', sans-serif !important;
+} 
 /************************NAVBAR***********************************/
 
 nav{
@@ -118,7 +121,6 @@ nav ul li{
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Roboto Condensed" sans-serif;
 
   z-index: 1;
 }
@@ -179,5 +181,30 @@ nav ul li{
 {
   .particles-canvas{
     display: none;
+  }
+}
+
+/************************** ABOUT ME *****************/
+
+.photo-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-img{
+  width: 40%;
+  border-radius: 50%;
+  border:  2px solid var(--primary-orange);
+}
+.about-heading{
+  color: var(--primary-orange);
+  text-transform: uppercase;
+}
+
+@media(max-width: 468px)
+{
+  .profile-img{
+    
   }
 }
