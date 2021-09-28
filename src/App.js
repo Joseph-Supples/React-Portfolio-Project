@@ -3,7 +3,17 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Particles from "react-particles-js";
- 
+import AboutMe from "./components/AboutMe.js";
+import Services from "./components/Services";
+import Experience from "./components/Experience";
+import Portfolio from "./components/Portfolio";
+import Testimonials from "./components/Testimonials";
+import Contacts from "./components/Contacts";
+import Footer from "./components/Footer";
+
+
+
+
 
 function App() {
   return (
@@ -32,6 +42,13 @@ function App() {
     />
     <Navbar/>
     <Header/>
+    <AboutMe/>
+    <Services/>
+    <Experience/>
+    <Portfolio/>
+    <Testimonials/>
+    <Contacts/>
+    <Footer />
     </>
   );
 }
