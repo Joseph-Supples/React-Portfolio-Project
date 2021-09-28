@@ -3,7 +3,7 @@ import author from "../canvasprofilepic.png";
 
 const AboutMe = () => {
     return (
-        <div className="container py-5">
+        <div id="about" className="container py-5">
             <div className="row">
             <div className="col-lg-6 colxm-12">
                 <div className="photo-wrap mb-5">
