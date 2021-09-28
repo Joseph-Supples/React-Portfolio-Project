@@ -1,42 +1,36 @@
-import React , {useRef, useState} from 'react'
 import emailjs from "emailjs-com"
-import { useForm } from 'react-hook-form';
+import React, {useRef, useState} from 'react'
+import {useForm} from 'react-hook-form';
 
 const Contacts = () => {
-    const { register, handleSubmit, formState:{errors}} = useForm();
-    const [successMessage, setSuccessMessage] = useState("");
+  const {register, handleSubmit, formState : {errors}} = useForm();
+  const [successMessage, setSuccessMessage] = useState("");
 
-    const service_id = "service_3o99lno";
-    const template_id = "template_82nb0ti";
-    const user_id = "user_DdlVVjHUZ56P1WQ8KczxQ";
-    const form = useRef();
+  const service_id = "service_3o99lno";
+  const template_id = "template_82nb0ti";
+  const user_id = "user_DdlVVjHUZ56P1WQ8KczxQ";
+  const form = useRef();
 
-    const onSubmit = (data, r) => {
-        sendEmail(
-            service_id,
-            template_id,
-            {
-                name: data.name,
-                phone: data.phone,
-                email: data.email,
-                subject: data.subject,
-                description: data.description
-            },
-            user_id
-            )
-            r.target.reset();
+  const onSubmit =
+      (data, r) => {
+        sendEmail(service_id, template_id, {
+          name : data.name,
+          phone : data.phone,
+          email : data.email,
+          subject : data.subject,
+          description : data.description
+        },
+                  user_id)
+        r.target.reset();
+      }
 
-    } 
-    
-
-    const sendEmail = (service_id, template_id, variables, user_id) => {
-    
-        emailjs.send(service_id, template_id, variables, user_id)
-          .then(() => {
-              setSuccessMessage("Form sent successfully! I'll contact you as soon as possible.")
-          }).catch(err => console.error(`Something went wrong ${err}`));
-      };
-
+  const sendEmail = (service_id, template_id, variables, user_id) => {
+    emailjs.send(service_id, template_id, variables, user_id)
+        .then(
+            () => {setSuccessMessage(
+                "Form sent successfully! I'll contact you as soon as possible.")})
+        .catch(err => console.error(`Something went wrong ${err}`));
+  };
 
     return (
         <div id="contactme" className="contacts">
@@ -51,22 +45,23 @@ const Contacts = () => {
                <div className="row">
                    <div className="col-md-6 col-xs-12">
                     <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Name"
-                    name="name"
-                    {...register("name", {
-                        required: "Please enter your Name",
-                        maxLength: {
-                          value: 20,
-                          message:
-                            "Please enter a name with fewer than 20 characters",
-                        },
-                      })}
-                    />
-                    <div className="line"></div>
-                    {errors.name && (
-                        <span className="error-message">{errors.name.message} </span>
+    type = "text"
+    className = "form-control"
+    placeholder = "Name"
+    name =
+        "name" {
+          ...register("name", {
+            required : "Please enter your Name",
+            maxLength : {
+              value : 20,
+              message : "Please enter a name with fewer than 20 characters",
+            },
+          })
+        } />
+                    <div className="line"></div >
+        {errors.name &&
+         (<span className = "error-message">{errors.name.message}<
+             /span>
                     )}
                     <input
                     type="text"
@@ -77,22 +72,23 @@ const Contacts = () => {
                         required: "Please enter your phone",
                       })}
                     />
-                    <div className="line"></div>
+          <div className = "line">
+          </div>
                     {errors.phone && (
-                        <span className="error-message">{errors.phone.message} </span>
-                    )}
-                    <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
+                        <span className="error-message">{errors.phone.message} </span>)} <
+        input
+    type = "email"
+    className = "form-control"
+    placeholder = "Email"
                     name="email"
-                    {...register("email", {
-                        required: "Please enter your email",
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: "invalid Email"
-                        }
-                      })}
+                    {
+    ...register("email", {
+      required : "Please enter your email",
+      pattern : {
+        value : /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message : "invalid Email"
+      }
+    })}
                     />
                     <div className="line"></div>
                     {errors.email && (
